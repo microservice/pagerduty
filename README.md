@@ -1,4 +1,4 @@
-# _Pagerduty Incident_ Open Microservice
+# _Pagerduty_ Open Microservice
 
 > This is to create, update and resolve incidents on PagerDuty
 
@@ -37,7 +37,7 @@ within this project's root directory:
 
 #### Actions
 
-##### createincident
+##### createIncident
 
 > Create an incident, on success return the creted incident detail, on fail return reason and status code.
 
@@ -50,13 +50,13 @@ within this project's root directory:
 | ACCESS_TOKEN  | `string` | `true`   | None    | basic athorization token.                                                        |
 
 ```shell
-oms run createincident \
+oms run createIncident \
     -a from='*****' \
     -a incident='*****' \
     -e ACCESS_TOKEN=$ACCESS_TOKEN
 ```
 
-##### getincident
+##### getIncident
 
 > Show detailed information about an incident.
 
@@ -68,7 +68,7 @@ oms run createincident \
 | ACCESS_TOKEN  | `string` | `true`   | None    | basic athorization token.           |
 
 ```shell
-oms run getincident \
+oms run getIncident \
     -a id='*****' \
     -e ACCESS_TOKEN=$ACCESS_TOKEN
 ```
@@ -87,7 +87,7 @@ oms run getincident \
 | date_range    | `string` | `false`  | None    | start and end date range                                         |
 | incident_key  | `string` | `false`  | None    | search with incident key                                         |
 | statuses      | `list`   | `false`  | None    | Return only incidents with the given statuses                    |
-| serviceids    | `list`   | `false`  | None    | Returns only the incidents associated with the passed service    |
+| serviceIds    | `list`   | `false`  | None    | Returns only the incidents associated with the passed service    |
 | userIds       | `list`   | `false`  | None    | Returns only the incidents currently assigned to the passed user |
 | ACCESS_TOKEN  | `string` | `true`   | None    | basic athorization token.                                        |
 
@@ -99,7 +99,7 @@ oms run listIncidents \
     -a date_range='*****' \
     -a incident_key='*****' \
     -a statuses='*****' \
-    -a serviceids='*****' \
+    -a serviceIds='*****' \
     -a userIds='*****' \
     -e ACCESS_TOKEN=$ACCESS_TOKEN
 ```
