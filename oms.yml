@@ -1,26 +1,32 @@
 oms: 1
-
-lifecycle:
-  startup:
-    command: ['pagerduty']
-
 info:
   version: 1.0.0
   title: Pagerduty
-  description: This is to create, update and resolve incidents on PagerDuty
+  description: 'This is to create, update and resolve incidents on PagerDuty'
   license:
     name: MIT
-    url: https://opensource.org/licenses/MIT
-
+    url: 'https://opensource.org/licenses/MIT'
+  contact:
+    name: Open Microservices
+    url: 'https://openmicroservices.org'
+    email: core@openmicroservices.org
+lifecycle:
+  startup:
+    command:
+      - pagerduty
 actions:
   createIncident:
-    help: Create an incident, on success return the creted incident detail, on fail return reason and status code.
+    help: >-
+      Create an incident, on success return the creted incident detail, on fail
+      return reason and status code.
     arguments:
       from:
         type: string
         in: query
         required: true
-        help: The email address of a valid user associated with the account making the request
+        help: >-
+          The email address of a valid user associated with the account making
+          the request
       incident:
         type: object
         in: requestBody
@@ -35,7 +41,7 @@ actions:
       type: object
       properties:
         type:
-          help: type of the pagerduty , eg.incident
+          help: 'type of the pagerduty , eg.incident'
           type: string
         summary:
           help: title of incident
@@ -44,10 +50,10 @@ actions:
           help: created new incident nubmber.
           type: number
         assignments:
-          help: detail of incident assignee, showing list of assignee.
+          help: 'detail of incident assignee, showing list of assignee.'
           type: list
         service:
-          help: service detail with type, summary, name, description
+          help: 'service detail with type, summary, name, description'
           type: object
         status:
           help: status of the created incident.
@@ -55,7 +61,6 @@ actions:
         priority:
           help: priority of the incident.
           type: object
-
   getIncident:
     help: Show detailed information about an incident.
     arguments:
@@ -67,13 +72,13 @@ actions:
     http:
       port: 5000
       method: get
-      path: /incidents/{{id}}
+      path: '/incidents/{{id}}'
       contentType: application/json
     output:
       type: object
       properties:
         type:
-          help: type of the pagerduty , eg.incident
+          help: 'type of the pagerduty , eg.incident'
           type: string
         summary:
           help: title of incident
@@ -82,10 +87,10 @@ actions:
           help: created new incident nubmber.
           type: number
         assignments:
-          help: detail of incident assignee, showing list of assignee.
+          help: 'detail of incident assignee, showing list of assignee.'
           type: list
         service:
-          help: service detail with type, summary, name, description
+          help: 'service detail with type, summary, name, description'
           type: object
         status:
           help: status of the created incident.
@@ -93,7 +98,6 @@ actions:
         priority:
           help: priority of the incident.
           type: object
-
   listIncidents:
     help: List existing incidents.
     arguments:
@@ -138,11 +142,10 @@ actions:
       type: map
       properties:
         incidents:
-          help:
-            show the list of incident object includes with type, summary, incident_number, assignments, service, status,
-            priority
+          help: >-
+            show the list of incident object includes with type, summary,
+            incident_number, assignments, service, status, priority
           type: list
-
   getIncidentNotes:
     help: List existing incident notes.
     arguments:
@@ -154,7 +157,7 @@ actions:
     http:
       port: 5000
       method: get
-      path: /incidents/{{id}}/notes
+      path: '/incidents/{{id}}/notes'
       contentType: application/json
     output:
       type: map
@@ -172,9 +175,8 @@ actions:
           help: incident note id
           type: string
         service:
-          help: service detail with type, summary, name, description
+          help: 'service detail with type, summary, name, description'
           type: object
-
   listServices:
     help: Get list existing services.
     arguments:
@@ -198,9 +200,10 @@ actions:
           help: offset of the records for getting next records.
           type: number
         services:
-          help: list of services object includes service id, type, service, name, description, teams, status
+          help: >-
+            list of services object includes service id, type, service, name,
+            description, teams, status
           type: list
-
   getService:
     help: Get details about an existing service.
     arguments:
@@ -217,7 +220,7 @@ actions:
     http:
       port: 5000
       method: post
-      path: /services/{{id}}
+      path: '/services/{{id}}'
       contentType: application/json
     output:
       type: object
@@ -232,12 +235,11 @@ actions:
           help: description of the service
           type: string
         teams:
-          help: list of the teams for service with team id, type, summary.
+          help: 'list of the teams for service with team id, type, summary.'
           type: list
         status:
           help: status of the service eg. critical
           type: string
-
 environment:
   ACCESS_TOKEN:
     type: string
